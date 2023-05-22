@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Features</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 30px;
+        color: #555;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      svg {
+        display: block;
+        margin: 20px auto;
+      }
+
+      canvas {
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #ddd;
+      }
+
+      video,
+      audio {
+        display: block;
+        margin: 20px auto;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type='text'],
+      input[type='email'],
+      input[type='submit'] {
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 200px;
+      }
+
+      input[type='submit'] {
+        background-color: #555;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>HTML5 Features</h1>
+
+    <h2>Geolocation</h2>
+    <p>Current location: <span id="location"></span></p>
+
+    <h2>SVG</h2>
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="50" fill="red" />
+    </svg>
+
+    <h2>Canvas API</h2>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+
+    <h2>Video</h2>
+    <video src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" width="500px" controls></video>
+
+    <h2>Audio</h2>
+    <audio src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" controls></audio>
+
+    <h2>Form Input</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      // Geolocation
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+
+      function showPosition(position) {
+        var locationElement = document.getElementById('location');
+        locationElement.innerHTML =
+          'Latitude: ' + position.coords.latitude + '<br>Longitude: ' + position.coords.longitude;
+      }
+
+      // Canvas API
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      context.fillStyle = 'blue';
+      context.fillRect(50, 50, 100, 100);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="myCtrl" class="flex flex-col justify-center items-center h-screen">
+    <div class="w-[400px]">
+      <h1 class="text-4xl font-bold mb-5 text-center">Worlde</h1>
+      <div class="grid grid-cols-5 gap-2" ng-repeat="guess_word in guesses">
+        <div
+          ng-repeat="letter in guess_word track by $index"
+          class="{{colorClass(letter, guess_word)}} p-4 text-center my-1"
+        >
+          {{letter}}
+        </div>
+      </div>
+      <div class="grid grid-cols-5 gap-2" ng-repeat="x in range(1, guessLimit - guessCount) track by $index">
+        <div ng-repeat="n in range(1,5) track by $index" class="bg-gray-200 px-4 py-7 text-center my-1"></div>
+      </div>
+    </div>
+
+    <div ng-hide="win || lose">
+      <input type="text" ng-model="guess" class="mt-5 border-gray-500 border-2 rounded-md mr-2 px-3 py-1.5" />
+      <button ng-click="checkGuess()" class="mt-2 bg-blue-500 text-white hover:bg-blue-600 rounded-md px-4 py-2">
+        Guess
+      </button>
+    </div>
+    <p class="mt-10" ng-show="win">Congrats! you've won... Refresh the page to start a new game</p>
+    <p class="mt-10" ng-show="lose">Sorry you've lost! The word is {{word}}</p>
+  </body>
+</html>
